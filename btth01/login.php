@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         // Login successful
         $_SESSION['username'] = $username; // Store username in session
-        header("Location: index.php"); // Redirect to a welcome or homepage
+        header("Location: admin/index.php"); // Redirect to a welcome or homepage
         exit();
     } else {
         $error = "Invalid username or password!";
