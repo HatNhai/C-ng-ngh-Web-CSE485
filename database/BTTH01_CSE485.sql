@@ -27,6 +27,15 @@ CREATE TABLE baiviet (
     FOREIGN KEY (ma_tloai) REFERENCES theloai(ma_tloai),
     FOREIGN KEY (ma_tgia) REFERENCES tacgia(ma_tgia)
 );
+
+CREATE TABLE users(
+    username varchar(30) not null PRIMARY KEY,
+    password varchar(30) not null
+);
+
+INSERT INTO users (username, password)
+VALUES ('nhaivu', 'nhaivu12345678');
+
 -------------------------------------------------------------------------------------
 INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (1, N'Nhacvietplus');
 INSERT INTO tacgia (ma_tgia, ten_tgia) VALUES (2, N'Sưu tầm');
