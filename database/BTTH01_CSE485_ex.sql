@@ -74,5 +74,4 @@ BEGIN
     JOIN theloai t ON b.ma_tloai = t.ma_tloai
     WHERE t.ten_tloai = @TenTheLoai;
 END
---4.k--
---4.l--
+
