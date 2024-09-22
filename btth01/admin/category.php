@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-=======
-<?php
-    include '../includes/database-connection.php';
-    
-    $sql = "SELECT ma_tloai, ten_tloai FROM theloai";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row['ma_tloai'] . "</td>";
-        echo "<td>" . $row['ten_tloai'] . "</td>";
-        echo "</tr>";
-    }
-} else {
-    echo "Không có thể loại nào.";
-}
-?>
-
->>>>>>> c24a9180f64de22c9f8468678745e2e25531b760
 <!DOCTYPE html>
 <html lang="en">
 <head>
