@@ -1,63 +1,13 @@
-<?php
-// Start a session to store user information
-session_start();
-
-// Database connection
-$servername = "localhost"; 
-$username = "root";
-$password = ""; 
-$dbname = "BTTH01_CSE485";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Prevent SQL Injection
-    $username = $conn->real_escape_string($username);
-    $password = $conn->real_escape_string($password);
-
-    // Example: Assuming you have a table users with fields username and password
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
-
-
-    if ($result->num_rows > 0) {
-        // Login successful
-        $_SESSION['username'] = $username; // Store username in session
-        header("Location: admin/index.php"); // Redirect to a welcome or homepage
-        exit();
-    } else {
-        $error = "Invalid username or password!";
-    }
-}
-
-$conn->close();
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music for Life - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style_login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style_login.css">
 </head>
 
 <body>
@@ -66,7 +16,7 @@ $conn->close();
             <div class="container-fluid">
                 <div class="my-logo">
                     <a class="navbar-brand" href="#">
-                        <img src="images/logo2.png" alt="" class="img-fluid">
+                        <img src="../../images/logo2.png" alt="" class="img-fluid">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -106,14 +56,14 @@ $conn->close();
                 </div>
                 <div class="card-body">
                     <?php if (isset($error)) { echo "<div class='alert alert-danger'>$error</div>"; } ?>
-                    <form method="POST" action="">
+                    <form method="POST" action="../../src/controllers/LoginController.php">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                             <input type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
                             <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
 
