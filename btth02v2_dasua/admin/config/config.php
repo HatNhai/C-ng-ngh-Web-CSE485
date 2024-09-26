@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost"; // Tên server của bạn
 $username = "root";        // Username MySQL
-$password = "Ngochai01";   // Mật khẩu MySQL (nếu có)
+$password = "";   // Mật khẩu MySQL (nếu có)
 $dbname = "btth01_cse485"; // Tên cơ sở dữ liệu
 
 // Tạo kết nối
