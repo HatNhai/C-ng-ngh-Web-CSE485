@@ -46,67 +46,62 @@
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
             <div class="col-sm">
-                <h3 class="text-center text-uppercase fw-bold">Thêm mới bài viết</h3>
-                <form action="index.php?controller=article&action=add" method="post">
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="title_id">Tiêu đề</span>
-                        
-                        <input type="text" class="form-control" name="tieude" required>
-                    </div>
+                <h3 class="text-center text-uppercase fw-bold">Sửa thông tin bài viết</h3>
+                <form action="index.php?controller=article&action=edited" method="post">
+                <?php
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Mã bài viết</span>";
+                    echo "<input type='number' class='form-control' name='bviet' readonly value ='". $row -> getMaBviet() ."'>";
+                    echo "</div>";
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Tiêu đề</span>";
+                    echo "<input type='text' class='form-control' name='tieude' value ='". $row -> getTieude() . "' >";
+                    echo "</div>";
 
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="Name_id">Tên bài hát</span>
-                        
-                        <input type="text" class="form-control" name="bhat" required>
-                    </div>
-                    
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="sumary_id">Mã thể loại</span>
-                        
-                        <input type="number" class="form-control" name="theloai" required>
-                    </div>
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Tên bài hát</span>";
+                    echo "<input type='text' class='form-control' name='bhat' value ='" . $row -> getTenBhat() . "'  >";
+                    echo "</div>";
 
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="sumary_id">Tóm tắt</span>
-                        
-                        <input type="text" class="form-control" name="tomtat" required>
-                    </div>
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Mã thể loại</span>";
+                    echo "<input type='number' class='form-control' name='theloai' value ='" . $row -> getMaTloai() . "' >";
+                    echo "</div>";
 
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="Nd_id">Nội dung</span>
-                        
-                        <input type="text" class="form-control" name="noidung">
-                    </div>
-                    
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="tacgia_id">Mã tác giả</span>
-                        
-                        <input type="number" class="form-control" name="tacgia" required>
-                    </div>
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Tóm tắt</span>";
+                    echo "<input type='text' class='form-control' name='tomtat' value ='" . $row -> getTomtat() . "' >";
+                    echo "</div>";
 
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="ngayviet_id">Ngày viết</span>
-                        
-                        <input type="date" class="form-control" name="ngay" required>
-                    </div>
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Nội dung</span>";
+                    echo "<input type='text' class='form-control' name='noidung' value ='" . $row -> getNoidung() . "' >";
+                    echo "</div>";
 
-                    <div class="input-group mt-3 mb-3">
-                        <span class="input-group-text" id="img_id">Hình ảnh</span>
-                        
-                        <input type="file" class="form-control" name="img">
-                    </div>
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Mã tác giả</span>";
+                    echo "<input type='text' class='form-control' name='tacgia' value ='" . $row -> getMaTgia() . "' >";
+                    echo "</div>";
 
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Ngày viết</span>";
+                    echo "<input type='datetime' class='form-control' name='ngay' value ='" . $row -> getNgayviet() . "' >";
+                    echo "</div>";
+
+                    echo "<div class='input-group mt-3 mb-3'>";
+                    echo "<span class='input-group-text' id='lblCatName'>Hình ảnh</span>";
+                    echo "<input type='file' class='form-control' name='img' value ='" . $row -> getHinhanh() . "' >";
+                    echo "</div>";
+                ?>    
                     <div class="form-group  float-end ">
-                        <input type="submit"  value="Thêm" class="btn btn-success " href="index.php?controller=article">
+                        <input type="submit" value="Lưu lại" class="btn btn-success">
                         <a href="index.php?controller=article" class="btn btn-warning ">Quay lại</a>
                     </div>
-
                 </form>
             </div>
         </div>
     </main>
-    
-        
+
     <footer class="bg-white d-flex justify-content-center align-items-center border-top border-secondary  border-2" style="height:80px">
         <h4 class="text-center text-uppercase fw-bold">TLU's music garden</h4>
     </footer>
