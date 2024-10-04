@@ -17,8 +17,18 @@
                         <tr>
                             <td> {{$author->id}} </td>
                             <td> {{$author->name}} </td>
-                            <td><a href=""><i class='fa-solid fa-pen-to-square'></i></a></td>
-                            <td><a href=""><i class='fa-solid fa-trash'></i></a></td>
+                            <!-- Cap nhat tac gia -->
+                            <td><a href="{{ route('authors.edit', $author->id) }}"><i class='fa-solid fa-pen-to-square'></i></a></td>
+                            <!-- Xoa tac gia -->
+                            <td>
+                                <form action="{{ route('authors.destroy', $author->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa tác giả này không?')">
+                                    <i class='fa-solid fa-trash'></i>
+                                </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
